@@ -1,10 +1,3 @@
-# vagrant-config
+# Vagrant files
 
-## Starts vagrant environment
-vagrant up
-
-## Connects to machine via SSH
-vagrant ssh
-
-## Start the XServer
-startxfce4&
+* lamp: Ubuntu + Apache + MySQL + PHP
