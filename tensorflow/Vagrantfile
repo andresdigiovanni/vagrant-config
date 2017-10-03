@@ -5,16 +5,23 @@
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
-Vagrant.configure("2") do |config|
+Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
-  config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.synced_folder "htdocs", "/var/www/html"
+
+  # Forward port 8888 for Jupyter notebook
+  config.vm.network "forwarded_port", guest: 8888, host: 8888
+
+  # Forward port 6006 for TensorBoard
+  config.vm.network "forwarded_port", guest: 6006, host: 6006
 
   config.vm.provider "virtualbox" do |vb|
-    vb.name = "Lamp"
-    vb.gui = true
+    vb.name = "TensorFlow"
+	vb.gui = true
   end
 
   # Download and install everything on first run
   config.vm.provision "shell", path: "config.sh"
+
+  # Run always
+  config.vm.provision "shell", run: "always", path: "initialize.sh"
 end
