@@ -7,4 +7,4 @@ vagrant up
 vagrant ssh
 
 ## Start the XServer
-startxfce4&
+startxfce4 &

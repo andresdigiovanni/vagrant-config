@@ -7,4 +7,7 @@ vagrant up
 vagrant ssh
 
 ## Start the XServer
-startxfce4&
+startxfce4 &
+
+## Start Jupyter Notebook
+jupyter notebook --notebook-dir=/vagrant --no-browser --ip=0.0.0.0 & 
